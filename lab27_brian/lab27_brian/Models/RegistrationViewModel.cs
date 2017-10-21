@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Net.Cache;
@@ -9,6 +10,12 @@ namespace lab27_brian.Models
 {
     public class RegistrationViewModel
     {
+        [Required]
+        [DisplayName("First Name")]
+        public string FirstName { get; set; }
+        [Required]
+        [DisplayName("Last Name")]
+        public string LastName { get; set; }
         [Required]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }

@@ -1,0 +1,19 @@
+﻿@model lab27_brian.Models.LoginViewModel
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    
+    <label asp-for="Email"></label>
+    <input asp-for="Email"/>
+    <span asp-validation-for="Email"></span><br/>
+    
+    <label asp-for="Password"></label>
+    <input asp-for="Password"/><br/>
+    
+    <label asp-for="RememberMe">
+        <input type="checkbox" asp-for="RememberMe"/>
+        @Html.DisplayNameFor(m => m.RememberMe)
+    </label>
+    
+    <button type="submit">Login</button>
+</form>
