@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using lab27_brian.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -9,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using lab27_brian.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace lab27_brian
 {
@@ -29,6 +31,13 @@ namespace lab27_brian
 
             services.AddDbContext<lab27_brianContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("lab27_brianContext")));
+
+            services.AddDbContext<ApplicationDbContext>(option => 
+                    option.UseSqlServer(Configuration.GetConnectionString("lab27_brianContext")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
