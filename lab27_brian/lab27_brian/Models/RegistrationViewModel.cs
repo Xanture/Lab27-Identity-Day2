@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Net.Cache;
-using System.Threading.Tasks;
 
 namespace lab27_brian.Models
 {
@@ -24,7 +19,7 @@ namespace lab27_brian.Models
         [Compare("Email", ErrorMessage = "Your Email address does not match")]
         public string ConrimEmail { get; set; }
         [Required]
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password, ErrorMessage = "Your password doesn't meet the minimum requiments")]
         public string Password { get; set; }
         [Required]
         [DataType(DataType.Password)]
