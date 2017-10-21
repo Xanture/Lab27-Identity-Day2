@@ -29,6 +29,7 @@ namespace lab27_brian.Models
         [Required]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Your Password does not match")]
+        [DisplayName("Confirm Password")]
         public string ConfirmPassword { get; set; }
     }
 }
