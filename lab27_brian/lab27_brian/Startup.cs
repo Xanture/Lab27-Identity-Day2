@@ -10,7 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using lab27_brian.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
 
 namespace lab27_brian
 {
@@ -27,6 +29,9 @@ namespace lab27_brian
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie("SiteLogIn", option => option.AccessDeniedPath = new PathString("/Account/Denied/"));
+
             services.AddMvc();
 
             services.AddDbContext<lab27_brianContext>(options =>
